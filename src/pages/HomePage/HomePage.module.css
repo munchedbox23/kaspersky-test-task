@@ -27,33 +27,29 @@
   font-weight: 400;
 }
 
-.container {
-  max-width: 1180px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.content {
+.points {
   width: 100%;
   display: flex;
-  gap: 80px;
+  align-items: center;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.leftColumn {
-  flex: 1 1 50%;
+.listItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
 }
 
-.rightColumn {
-  flex: 1 1 49%;
+.statisticItem {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 253px;
+  height: 92px;
 }
 
-.columnImage {
-  background-image: url("https://content.kaspersky-labs.com/fm/site-editor/64/64aa7d6c0a450a226bc2b348a4a60286/processed/ekhomepage-q93.webp");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  height: 460px;
-  width: 100%;
+.statisticItem span {
+  color: #00836f;
+  text-align: center;
 }

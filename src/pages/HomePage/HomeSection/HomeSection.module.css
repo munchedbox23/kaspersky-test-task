@@ -1,0 +1,29 @@
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  gap: 80px;
+}
+
+.leftColumn {
+  flex: 1 1 50%;
+}
+
+.rightColumn {
+  flex: 1 1 49%;
+}
+
+.columnImage {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 460px;
+  width: 100%;
+}
