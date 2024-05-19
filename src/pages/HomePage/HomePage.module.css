@@ -28,7 +28,7 @@
 }
 
 .container {
-  max-width: 1108px;
+  max-width: 1180px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -42,9 +42,18 @@
 }
 
 .leftColumn {
-  width: 50%;
+  flex: 1 1 50%;
 }
 
-.about {
-  height: 600px;
+.rightColumn {
+  flex: 1 1 49%;
+}
+
+.columnImage {
+  background-image: url("https://content.kaspersky-labs.com/fm/site-editor/64/64aa7d6c0a450a226bc2b348a4a60286/processed/ekhomepage-q93.webp");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 460px;
+  width: 100%;
 }

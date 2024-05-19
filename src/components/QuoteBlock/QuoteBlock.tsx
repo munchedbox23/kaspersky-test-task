@@ -11,9 +11,9 @@ export const QuoteBlock: FC<TQuoteBlock> = ({ author, children, position }) => {
   return (
     <div className={quoteStyles.block}>
       <blockquote className={quoteStyles.quote}>{children}</blockquote>
-      <cite className={quoteStyles.author}>
-        <span className="">{author}</span>
-        <span className="">{position}</span>
+      <cite className={`${quoteStyles.author} mt-10`}>
+        <span className="text-xl leading-6 font-bold">{author}</span>
+        <span className="mt-2 text-base font-light">{position}</span>
       </cite>
     </div>
   );

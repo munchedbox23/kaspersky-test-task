@@ -1,0 +1,37 @@
+.quote {
+  margin: 32px 0 0;
+  text-align: left;
+  font-size: 2rem;
+  line-height: 37px;
+  font-weight: 400;
+  color: var(--color-black);
+  font-family: var(--kaspersky-sans);
+  position: relative;
+}
+
+.quote::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 20px;
+  width: 25px;
+  transform: translateY(calc(-100% - 12px));
+  left: 0;
+  background-image: url("https://www.kaspersky.ru/siterenderer/_next/static/media/quote-top.a76c96ca.svg");
+}
+
+.quote::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 20px;
+  width: 25px;
+  right: 0;
+  transform: translateY(calc(100% + 6px));
+  background-image: url("https://www.kaspersky.ru/siterenderer/_next/static/media/quote-bottom.c7b7d492.svg");
+}
+
+.author {
+  display: flex;
+  flex-direction: column;
+}

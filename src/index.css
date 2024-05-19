@@ -295,6 +295,10 @@
   --lighten-primary-rest-10: #00dbb9;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+}
+
 body {
   font-size: 1rem;
   position: relative;
@@ -304,4 +308,5 @@ body {
   width: 100vw;
   height: 100%;
   background: var(--body-bg-color);
+  overflow-y: auto;
 }
