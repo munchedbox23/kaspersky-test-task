@@ -64,7 +64,7 @@ export const SelectBar = () => {
         style={{ pointerEvents: isOpen ? "auto" : "none" }}
       >
         <motion.li className={styles.menuItem} variants={itemVariants}>
-          Таблицы
+          Таблица
         </motion.li>
         <motion.li className={styles.menuItem} variants={itemVariants}>
           Карточки
