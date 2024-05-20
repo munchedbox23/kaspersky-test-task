@@ -67,7 +67,7 @@ export const HomePage: FC = () => (
           Kaspersky
         </motion.h1>
         <motion.p
-          className="text-4xl font-normal mb-10"
+          className={`${styles.subtitle} text-4xl font-normal mb-10`}
           initial={{ x: "900px" }}
           animate={{ x: 0 }}
           transition={{ duration: 0.5 }}
@@ -90,7 +90,7 @@ export const HomePage: FC = () => (
         <div
           className={`${styles.describeHeading} leading-6 font-light text-lg mt-8`}
         >
-          <strong className="font-bold">Все продукты Kaspersky</strong>{" "}
+          <strong className="font-bold">Все продукты Kaspersky</strong>
           используют передовые технологии искусственного интеллекта, способные
           обнаружить и нейтрализовать любую, даже неизвестную прежде
           онлайн-угрозу. При каждом подключении к интернету они:
@@ -103,7 +103,7 @@ export const HomePage: FC = () => (
       </motion.div>
     </HomeSection>
 
-    <ul className="flex items-center justify-center gap-10">
+    <ul className={styles.statisticList}>
       {points.map((point, index) => (
         <StatisticsItem count={point.count} descr={point.descr} key={index} />
       ))}

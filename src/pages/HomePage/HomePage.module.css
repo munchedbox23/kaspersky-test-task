@@ -49,7 +49,54 @@
   height: 92px;
 }
 
+.statisticList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
 .statisticItem span {
   color: #00836f;
   text-align: center;
+}
+
+@media (max-width: 1600px) {
+  .textWrapper {
+    transform: translateY(-10%);
+  }
+
+  .title {
+    font-size: 120px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .title {
+    font-size: 100px;
+  }
+}
+
+@media (max-width: 771px) {
+  .title {
+    font-size: 70px;
+  }
+  .subtitle {
+    font-size: 30px;
+  }
+  .describeHeading {
+    font-size: 1rem;
+  }
+  .statisticList {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 495px) {
+  .title {
+    font-size: 60px;
+  }
+  .subtitle {
+    font-size: 17px;
+  }
 }

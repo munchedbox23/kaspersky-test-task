@@ -27,3 +27,43 @@
   height: 460px;
   width: 100%;
 }
+
+@media (max-width: 1280px) {
+  .container {
+    max-width: 1015px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .container {
+    max-width: 870px;
+  }
+}
+
+@media (max-width: 910px) {
+  .heading {
+    font-size: 25px;
+    margin-bottom: 1rem;
+  }
+  .content {
+    padding-left: 20px;
+    gap: 1px;
+  }
+}
+
+@media (max-width: 771px) {
+  .container {
+    max-width: 450px;
+  }
+  .content {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 495px) {
+  .heading {
+    line-height: 1.5rem;
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+}

@@ -14,14 +14,16 @@ export const HomeSection: FC<PropsWithChildren<THomeSectionProps>> = ({
 }) => {
   return (
     <section className="pb-20">
-      <h2 className="pt-10 text-4xl leading-10 font-bold text-center mb-12">
+      <h2
+        className={`${styles.heading} pt-10 text-4xl leading-10 font-bold text-center mb-12`}
+      >
         {title}
       </h2>
       <div className={styles.container}>
         <motion.article
           className={styles.content}
-          initial={{ x: "500px" }}
-          whileInView={{ x: 0 }}
+          initial={{ x: "500px", opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
         >
@@ -30,8 +32,8 @@ export const HomeSection: FC<PropsWithChildren<THomeSectionProps>> = ({
             <motion.div
               style={{ backgroundImage: `url(${image})` }}
               className={styles.columnImage}
-              initial={{ x: "500px" }}
-              animate={{ x: 0 }}
+              initial={{ x: "500px", opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 1 }}
             ></motion.div>
           </div>

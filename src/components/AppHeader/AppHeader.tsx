@@ -1,15 +1,31 @@
 import headerStyles from "./AppHeader.module.css";
 import LogoImage from "../../images/logo.svg";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { navLinks } from "../../utils/constants";
 import { HeaderLink } from "../HeaderLink/HeaderLink";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMagnifyingGlass,
+  faXmark,
+  faBars,
+} from "@fortawesome/free-solid-svg-icons";
 import { AnimatePresence, motion } from "framer-motion";
 import cn from "classnames";
 
 export const AppHeader: FC = () => {
   const [isInputActive, setIsInputActive] = useState(false);
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 640);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth <= 640);
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
 
   return (
     <header className={`${headerStyles.header} pt-8 pb-8`}>
@@ -57,16 +73,20 @@ export const AppHeader: FC = () => {
               </motion.form>
             )}
           </AnimatePresence>
-          <ul className={headerStyles.menuList}>
-            {navLinks.map((link) => (
-              <HeaderLink
-                key={link.id}
-                icon={link.icon}
-                text={link.name}
-                route={link.route}
-              />
-            ))}
-          </ul>
+          {!isMobileView ? (
+            <ul className={headerStyles.menuList}>
+              {navLinks.map((link) => (
+                <HeaderLink
+                  key={link.id}
+                  icon={link.icon}
+                  text={link.name}
+                  route={link.route}
+                />
+              ))}
+            </ul>
+          ) : (
+            <FontAwesomeIcon icon={faBars} className={headerStyles.menuIcon} />
+          )}
         </nav>
       </div>
     </header>
