@@ -1,0 +1,21 @@
+.userList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+  justify-content: center;
+}
+
+.listWrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 20px;
+}
+
+.moreBtn {
+  padding: 5px 15px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 18px;
+}

@@ -7,4 +7,5 @@
 .listHeading {
   display: flex;
   justify-content: flex-end;
+  height: 70px;
 }
