@@ -1,0 +1,37 @@
+.selectMenu {
+  filter: drop-shadow(1px 1px 1px var(--primary-button-bg-color));
+  width: 250px;
+}
+
+.menuBtn {
+  background: var(--primary-button-bg-color);
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 10px;
+  padding: 5px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menuList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgb(241, 241, 241);
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+.menuItem {
+  color: var(--primary-button-bg-color);
+  display: block;
+  cursor: pointer;
+}

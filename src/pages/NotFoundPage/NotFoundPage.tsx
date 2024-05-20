@@ -1,8 +1,9 @@
 import styles from "./NotFoundPage.module.css";
 import { Link } from "react-router-dom";
 import { ROUTE } from "../../utils/constants";
+import { FC } from "react";
 
-export const NotFoundPage = () => {
+export const NotFoundPage: FC = () => {
   return (
     <main
       className={`${styles.main} grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8`}
