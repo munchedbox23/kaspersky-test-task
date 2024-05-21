@@ -4,13 +4,7 @@
   align-items: center;
   gap: 30px;
   justify-content: center;
-}
-
-.listWrapper {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding-bottom: 20px;
+  width: 100%;
 }
 
 .moreBtn {

@@ -1,6 +1,9 @@
 import styles from "./SelectBar.module.css";
 import { motion, Variants } from "framer-motion";
 import { useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../services/store/hooks";
+import { TDisplayMode } from "../../types/userTypes";
+import { setDisplayMode } from "../../services/features/users/usersSlice";
 
 const itemVariants: Variants = {
   open: {
@@ -13,6 +16,12 @@ const itemVariants: Variants = {
 
 export const SelectBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useAppDispatch();
+
+  const handleDisplayMode = (mode: TDisplayMode) => {
+    dispatch(setDisplayMode(mode));
+    setIsOpen(false);
+  };
 
   return (
     <motion.nav
@@ -63,13 +72,25 @@ export const SelectBar = () => {
         }}
         style={{ pointerEvents: isOpen ? "auto" : "none" }}
       >
-        <motion.li className={styles.menuItem} variants={itemVariants}>
+        <motion.li
+          onClick={() => handleDisplayMode("table")}
+          className={styles.menuItem}
+          variants={itemVariants}
+        >
           Таблица
         </motion.li>
-        <motion.li className={styles.menuItem} variants={itemVariants}>
+        <motion.li
+          onClick={() => handleDisplayMode("cards")}
+          className={styles.menuItem}
+          variants={itemVariants}
+        >
           Карточки
         </motion.li>
-        <motion.li className={styles.menuItem} variants={itemVariants}>
+        <motion.li
+          onClick={() => handleDisplayMode("columns")}
+          className={styles.menuItem}
+          variants={itemVariants}
+        >
           По группам
         </motion.li>
       </motion.ul>
