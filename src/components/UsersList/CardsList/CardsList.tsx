@@ -1,4 +1,4 @@
-import {  forwardRef, useState } from "react";
+import { forwardRef, useState } from "react";
 import styles from "./CardsList.module.css";
 import { UserCard } from "../../UserCard/UserCard";
 import { TListProps } from "../../../types/userTypes";
@@ -42,6 +42,7 @@ export const CardsList = forwardRef<HTMLDivElement, TListProps>(
             <option value="phone-desc">Телефон: по убыванию</option>
           </select>
         </div>
+
         <ul className={`${styles.userList} pb-10`}>
           {data.slice(0, visibleUsers).map((user) => (
             <UserCard key={user._id} {...user} />

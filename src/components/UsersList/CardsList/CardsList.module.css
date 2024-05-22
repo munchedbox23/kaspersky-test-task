@@ -35,3 +35,19 @@
   flex-direction: column;
   align-items: flex-start;
 }
+
+@media (max-width: 1130px) {
+  .sortContainer {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 960px) {
+  .sortContainer {
+    margin-bottom: 16px;
+    margin-left: 40px;
+  }
+  .sortSelect {
+    width: 170px;
+  }
+}

@@ -27,22 +27,28 @@ export const UserListPage: FC = () => {
           <SelectBar />
         </div>
         <section className={styles.listContainer}>
-          <DndProvider backend={HTML5Backend}>
-            {displayMode === "table" ? (
-              <TableList data={users} />
-            ) : displayMode === "cards" ? (
-              <>
-                <CardsList ref={contentRef} data={users} />
-                <FontAwesomeIcon
-                  icon={faCircleArrowUp}
-                  className={styles.circleUp}
-                  onClick={handleTabIcon}
-                />
-              </>
-            ) : (
-              <ColumnList data={users} />
-            )}
-          </DndProvider>
+          {users.length ? (
+            <DndProvider backend={HTML5Backend}>
+              {displayMode === "table" ? (
+                <TableList data={users} />
+              ) : displayMode === "cards" ? (
+                <>
+                  <CardsList ref={contentRef} data={users} />
+                  <FontAwesomeIcon
+                    icon={faCircleArrowUp}
+                    className={styles.circleUp}
+                    onClick={handleTabIcon}
+                  />
+                </>
+              ) : (
+                <ColumnList data={users} />
+              )}
+            </DndProvider>
+          ) : (
+            <span className="text-xl font-medium text-gray-700">
+              К сожалению пользователя с таким именем нет
+            </span>
+          )}
         </section>
       </div>
     </motion.main>

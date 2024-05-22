@@ -1,8 +1,8 @@
 import styles from "./ColumnList.module.css";
 import { v4 as uuidv4 } from "uuid";
-import { FC } from "react";
-import { TListProps } from "../../../types/userTypes";
-import { ColumnCard } from "./ColumnCard/ColumnCard";
+import { FC, useState } from "react";
+import { TListProps, IUser } from "../../../types/userTypes";
+import { Column } from "./Column/Column";
 
 export const ColumnList: FC<TListProps> = ({ data }) => {
   const userGroups = Array.from(
@@ -11,29 +11,44 @@ export const ColumnList: FC<TListProps> = ({ data }) => {
         .map((user) => user.group.split("/")[1])
         .filter((group) => group !== undefined)
     )
+  ).splice(0, 3);
+
+  const [columns, setColumns] = useState(
+    userGroups.reduce((acc, group) => {
+      acc[group] = data.filter((user) => user.group.includes(group));
+      return acc;
+    }, {} as Record<string, IUser[]>)
   );
+
+  const handleDrop = (group: string, user: IUser) => {
+    setColumns((prevColumns) => {
+      const updatedColumns = { ...prevColumns };
+
+      Object.keys(updatedColumns).forEach((key) => {
+        updatedColumns[key] = updatedColumns[key].filter(
+          (u) => u._id !== user._id
+        );
+      });
+
+      if (!updatedColumns[group]) {
+        updatedColumns[group] = [];
+      }
+      updatedColumns[group] = [user, ...updatedColumns[group]];
+
+      return updatedColumns;
+    });
+  };
 
   return (
     <section className={styles.columnSection}>
       <ul className={styles.columnList}>
-        {userGroups.splice(0, 3).map((group) => (
-          <div key={uuidv4()} className={`${styles.column} p-4`}>
-            <h2 className="text-2xl font-normal text-gray-500 mb-3">{group}</h2>
-            <div className={styles.cardsList}>
-              {data
-                .filter((user) => user.group.includes(group))
-                .map((user, index) => (
-                  <ColumnCard
-                    key={user._id}
-                    index={index}
-                    name={user.name}
-                    email={user.email}
-                    id={user._id}
-                    group={user.group}
-                  />
-                ))}
-            </div>
-          </div>
+        {userGroups.map((group) => (
+          <Column
+            key={uuidv4()}
+            group={group}
+            users={columns[group]}
+            onDrop={handleDrop}
+          />
         ))}
       </ul>
     </section>

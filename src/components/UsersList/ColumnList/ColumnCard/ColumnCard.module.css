@@ -7,3 +7,12 @@
   align-items: center;
   gap: 10px;
 }
+
+@media (max-width: 1130px) {
+  .columnCard {
+    padding: 0.5rem;
+  }
+  .email {
+    font-size: 14px;
+  }
+}
