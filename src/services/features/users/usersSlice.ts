@@ -64,6 +64,21 @@ export const usersSlice = createSlice({
       state.sortOption = action.payload;
       state.users = sortUsers(state.filteredUsers, state.sortOption);
     },
+    moveCard: (
+      state,
+      action: PayloadAction<{
+        dragIndex: number;
+        hoverIndex: number;
+        sourceGroup: string;
+      }>
+    ) => {
+      const { dragIndex, hoverIndex, sourceGroup } = action.payload;
+      const temp = state.users[dragIndex];
+      state.users = state.users.filter(
+        (item, idx) => idx !== dragIndex && item.group == sourceGroup
+      );
+      state.users.splice(hoverIndex, 0, temp);
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -84,6 +99,6 @@ export const usersSlice = createSlice({
   },
 });
 
-export const { setDisplayMode, filterUsersByName, setSortOption } =
+export const { setDisplayMode, filterUsersByName, setSortOption, moveCard } =
   usersSlice.actions;
 export default usersSlice.reducer;

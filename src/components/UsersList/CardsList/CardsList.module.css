@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  
 }
 
 .userList {
@@ -15,7 +14,7 @@
 }
 
 .sortSelect {
-  padding: 2px 0;
+  padding: 2px 5px;
   background: var(--primary-button-bg-color);
   border: 0 none;
   height: 30px;

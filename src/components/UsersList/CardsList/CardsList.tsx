@@ -1,4 +1,4 @@
-import { FC, forwardRef, useState } from "react";
+import {  forwardRef, useState } from "react";
 import styles from "./CardsList.module.css";
 import { UserCard } from "../../UserCard/UserCard";
 import { TListProps } from "../../../types/userTypes";

@@ -7,6 +7,9 @@ import { motion } from "framer-motion";
 import { useAppSelector } from "../../services/store/hooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { ColumnList } from "../../components/UsersList/ColumnList/ColumnList";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 export const UserListPage: FC = () => {
   const users = useAppSelector((store) => store.users.users);
@@ -24,18 +27,22 @@ export const UserListPage: FC = () => {
           <SelectBar />
         </div>
         <section className={styles.listContainer}>
-          {displayMode === "table" ? (
-            <TableList data={users} />
-          ) : displayMode === "cards" ? (
-            <>
-              <CardsList ref={contentRef} data={users} />
-              <FontAwesomeIcon
-                icon={faCircleArrowUp}
-                className={styles.circleUp}
-                onClick={handleTabIcon}
-              />
-            </>
-          ) : null}
+          <DndProvider backend={HTML5Backend}>
+            {displayMode === "table" ? (
+              <TableList data={users} />
+            ) : displayMode === "cards" ? (
+              <>
+                <CardsList ref={contentRef} data={users} />
+                <FontAwesomeIcon
+                  icon={faCircleArrowUp}
+                  className={styles.circleUp}
+                  onClick={handleTabIcon}
+                />
+              </>
+            ) : (
+              <ColumnList data={users} />
+            )}
+          </DndProvider>
         </section>
       </div>
     </motion.main>
