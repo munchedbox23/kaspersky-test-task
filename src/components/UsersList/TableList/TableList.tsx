@@ -3,7 +3,15 @@ import styles from "./TableList.module.css";
 import { TListProps, IUser } from "../../../types/userTypes";
 import { useTable, useSortBy, Column, usePagination } from "react-table";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSortDown, faSortUp } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSortDown,
+  faSortUp,
+  faAnglesLeft,
+  faAnglesRight,
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
 
 export const TableList: FC<TListProps> = ({ data }) => {
   const columns: Column<IUser>[] = useMemo(
@@ -44,7 +52,7 @@ export const TableList: FC<TListProps> = ({ data }) => {
 
   return (
     <>
-      <div className={styles.container}>
+      <motion.div className={styles.container}>
         <table {...getTableProps()}>
           <thead>
             {headerGroups.map((headerGroup) => (
@@ -80,20 +88,20 @@ export const TableList: FC<TListProps> = ({ data }) => {
             })}
           </tbody>
         </table>
-      </div>
-      <div>
+      </motion.div>
+      <div className={styles.pagination}>
         <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-          {"<<"}
-        </button>{" "}
+          <FontAwesomeIcon icon={faAnglesLeft} />
+        </button>
         <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-          {"<"}
+          <FontAwesomeIcon icon={faChevronLeft} />
         </button>
         <button onClick={() => nextPage()} disabled={!canNextPage}>
-          {">"}
-        </button>{" "}
+          <FontAwesomeIcon icon={faChevronRight} />
+        </button>
         <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
-          {">>"}
-        </button>{" "}
+          <FontAwesomeIcon icon={faAnglesRight} />
+        </button>
         <span>
           Page{" "}
           <strong>
@@ -101,8 +109,9 @@ export const TableList: FC<TListProps> = ({ data }) => {
           </strong>{" "}
         </span>
         <span>
-          | Go to page:{" "}
+          | Go to page:
           <input
+            min={1}
             type="number"
             defaultValue={pageIndex + 1}
             onChange={(e) => {

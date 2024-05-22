@@ -1,9 +1,8 @@
 import { FC, useState } from "react";
 import styles from "./CardsList.module.css";
 import { UserCard } from "../../UserCard/UserCard";
-import { motion } from "framer-motion";
-import { IUser } from "../../../types/userTypes";
 import { TListProps } from "../../../types/userTypes";
+import { PrimaryButton } from "../../../ui/PrimaryButton/PrimaryButton";
 
 export const CardsList: FC<TListProps> = ({ data }) => {
   const [visibleUsers, setVisibleUsers] = useState(15);
@@ -20,14 +19,7 @@ export const CardsList: FC<TListProps> = ({ data }) => {
         ))}
       </ul>
       {visibleUsers < data.length && (
-        <motion.button
-          initial={{ background: "var(--primary-button-bg-color)" }}
-          whileHover={{ background: "var(--color-primary-active)" }}
-          className={styles.moreBtn}
-          onClick={showMoreUsers}
-        >
-          Показать больше
-        </motion.button>
+        <PrimaryButton onClick={showMoreUsers}>Показать больше</PrimaryButton>
       )}
     </>
   );

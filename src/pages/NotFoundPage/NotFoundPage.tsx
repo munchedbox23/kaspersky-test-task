@@ -1,13 +1,10 @@
-import styles from "./NotFoundPage.module.css";
 import { Link } from "react-router-dom";
 import { ROUTE } from "../../utils/constants";
 import { FC } from "react";
 
 export const NotFoundPage: FC = () => {
   return (
-    <main
-      className={`${styles.main} grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8`}
-    >
+    <main className=" grid h-screen place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
       <div className="text-center">
         <p className="text-8xl font-semibold text-indigo-600">404</p>
         <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">

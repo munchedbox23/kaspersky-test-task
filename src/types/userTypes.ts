@@ -7,3 +7,9 @@ export interface IUser {
   phone: string;
   verified: boolean;
 }
+
+export type TDisplayMode = "cards" | "table" | "columns";
+
+export type TListProps = {
+  data: IUser[];
+};

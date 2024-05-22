@@ -27,3 +27,13 @@ th {
 span {
   margin-left: 5px;
 }
+
+button:disabled {
+  color: gray;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
