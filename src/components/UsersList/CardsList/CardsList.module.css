@@ -1,3 +1,10 @@
+.cardList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  
+}
+
 .userList {
   display: flex;
   flex-wrap: wrap;
@@ -7,9 +14,25 @@
   width: 100%;
 }
 
-.moreBtn {
-  padding: 5px 15px;
+.sortSelect {
+  padding: 2px 0;
+  background: var(--primary-button-bg-color);
+  border: 0 none;
+  height: 30px;
+  outline: none;
   border-radius: 8px;
-  color: #fff;
+  color: var(--color-white);
+  font-weight: 500;
   font-size: 18px;
+}
+
+.sortSelect option {
+  background: var(--color-white);
+  color: var(--color-text-icons-elements__secondary);
+}
+
+.cardsList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }

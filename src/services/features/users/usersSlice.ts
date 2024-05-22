@@ -1,10 +1,5 @@
-import {
-  createSlice,
-  createAsyncThunk,
-  PayloadAction,
-  combineSlices,
-} from "@reduxjs/toolkit";
-import { IUser, TDisplayMode } from "../../../types/userTypes";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { IUser, TDisplayMode, TSortOption } from "../../../types/userTypes";
 import { request } from "../../../utils/requests";
 
 type TUsersState = {
@@ -13,6 +8,7 @@ type TUsersState = {
   isUsersRequestFailed: boolean;
   displayMode: TDisplayMode;
   filteredUsers: Array<IUser>;
+  sortOption: TSortOption;
 };
 
 const initialState: TUsersState = {
@@ -21,6 +17,7 @@ const initialState: TUsersState = {
   isUsersRequestLoading: false,
   isUsersRequestFailed: false,
   displayMode: "cards",
+  sortOption: "default",
 };
 
 export const getUsers = createAsyncThunk<IUser[], undefined>(
@@ -30,6 +27,25 @@ export const getUsers = createAsyncThunk<IUser[], undefined>(
     return response;
   }
 );
+
+const sortUsers = (users: IUser[], sortOption: TSortOption): IUser[] => {
+  switch (sortOption) {
+    case "name-asc":
+      return [...users].sort((a, b) => a.name.localeCompare(b.name));
+    case "name-desc":
+      return [...users].sort((a, b) => b.name.localeCompare(a.name));
+    case "group-asc":
+      return [...users].sort((a, b) => a.group.localeCompare(b.group));
+    case "group-desc":
+      return [...users].sort((a, b) => b.group.localeCompare(a.group));
+    case "phone-asc":
+      return [...users].sort((a, b) => a.phone.localeCompare(b.phone));
+    case "phone-desc":
+      return [...users].sort((a, b) => b.phone.localeCompare(a.phone));
+    default:
+      return users;
+  }
+};
 
 export const usersSlice = createSlice({
   name: "users",
@@ -43,6 +59,10 @@ export const usersSlice = createSlice({
       state.users = state.filteredUsers.filter((user) =>
         user.name.toLowerCase().includes(searchTerm)
       );
+    },
+    setSortOption: (state, action: PayloadAction<TSortOption>) => {
+      state.sortOption = action.payload;
+      state.users = sortUsers(state.filteredUsers, state.sortOption);
     },
   },
   extraReducers: (builder) => {
@@ -64,5 +84,6 @@ export const usersSlice = createSlice({
   },
 });
 
-export const { setDisplayMode, filterUsersByName } = usersSlice.actions;
+export const { setDisplayMode, filterUsersByName, setSortOption } =
+  usersSlice.actions;
 export default usersSlice.reducer;

@@ -12,13 +12,14 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 import cn from "classnames";
 import { useAppDispatch } from "../../services/store/hooks";
-import {
-  filterUsersByName,
-} from "../../services/features/users/usersSlice";
+import { filterUsersByName } from "../../services/features/users/usersSlice";
+import { useSearchParams } from "react-router-dom";
 
 export const AppHeader: FC = () => {
   const [isInputActive, setIsInputActive] = useState(false);
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 640);
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -32,13 +33,23 @@ export const AppHeader: FC = () => {
     };
   });
 
+  useEffect(() => {
+    const searchTerm = searchParams.get("search") || "";
+    if (searchTerm) {
+      setIsInputActive(true);
+      dispatch(filterUsersByName(searchTerm));
+    }
+  }, [dispatch, searchParams]);
+
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value;
+    setSearchParams({ [e.target.name]: searchTerm });
     dispatch(filterUsersByName(searchTerm));
   };
 
   const handleCloseSearch = () => {
     setIsInputActive(false);
+    setSearchParams("");
     dispatch(filterUsersByName(""));
   };
 
@@ -68,6 +79,7 @@ export const AppHeader: FC = () => {
                   name="search"
                   className={`${headerStyles.input} pt-4 pr-10 pb-4 pl-6`}
                   autoComplete="off"
+                  value={searchParams.get("search") || ""}
                   onChange={handleSearchChange}
                 />
                 <motion.button

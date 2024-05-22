@@ -16,11 +16,11 @@ import { motion } from "framer-motion";
 export const TableList: FC<TListProps> = ({ data }) => {
   const columns: Column<IUser>[] = useMemo(
     () => [
-      { Header: "Полное имя", accessor: "name", rowKey: "name" },
-      { Header: "Учетная запись", accessor: "account", rowKey: "account" },
-      { Header: "Электронная почта", accessor: "email", rowKey: "email" },
-      { Header: "Группа", accessor: "group", rowKey: "group" },
-      { Header: "Номер телефона", accessor: "phone", rowKey: "phone" },
+      { Header: "Полное имя", accessor: "name" },
+      { Header: "Учетная запись", accessor: "account" },
+      { Header: "Электронная почта", accessor: "email" },
+      { Header: "Группа", accessor: "group" },
+      { Header: "Номер телефона", accessor: "phone" },
     ],
     []
   );
@@ -55,12 +55,15 @@ export const TableList: FC<TListProps> = ({ data }) => {
       <motion.div className={styles.container}>
         <table {...getTableProps()}>
           <thead>
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
+            {headerGroups.map((headerGroup, i) => (
+              <tr
+                {...headerGroup.getHeaderGroupProps()}
+                key={`header-group-${i}`}
+              >
+                {headerGroup.headers.map((column, j) => (
                   <th
-                    {...column.getHeaderProps()}
-                    {...column.getSortByToggleProps()}
+                    {...column.getHeaderProps(column.getSortByToggleProps())}
+                    key={`header-${i}-${j}`}
                   >
                     {column.render("Header")}
                     {column.isSorted && (
@@ -77,12 +80,12 @@ export const TableList: FC<TListProps> = ({ data }) => {
             {page.map((row, i) => {
               prepareRow(row);
               return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => {
-                    return (
-                      <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                    );
-                  })}
+                <tr {...row.getRowProps()} key={`row-${i}`}>
+                  {row.cells.map((cell, j) => (
+                    <td {...cell.getCellProps()} key={`cell-${i}-${j}`}>
+                      {cell.render("Cell")}
+                    </td>
+                  ))}
                 </tr>
               );
             })}
