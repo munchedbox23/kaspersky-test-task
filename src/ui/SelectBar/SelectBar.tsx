@@ -1,7 +1,7 @@
 import styles from "./SelectBar.module.css";
 import { motion, Variants } from "framer-motion";
 import { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../services/store/hooks";
+import { useAppDispatch } from "../../services/store/hooks";
 import { TDisplayMode } from "../../types/userTypes";
 import { setDisplayMode } from "../../services/features/users/usersSlice";
 
