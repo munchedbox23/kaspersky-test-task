@@ -1,0 +1,8 @@
+.primaryBtn {
+  display: block;
+  margin: 0 auto;
+  padding: 5px 15px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 18px;
+}

@@ -1,0 +1,53 @@
+.cardList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.userList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+  justify-content: center;
+  width: 100%;
+}
+
+.sortSelect {
+  padding: 2px 5px;
+  background: var(--primary-button-bg-color);
+  border: 0 none;
+  height: 30px;
+  outline: none;
+  border-radius: 8px;
+  color: var(--color-white);
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.sortSelect option {
+  background: var(--color-white);
+  color: var(--color-text-icons-elements__secondary);
+}
+
+.cardsList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@media (max-width: 1130px) {
+  .sortContainer {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 960px) {
+  .sortContainer {
+    margin-bottom: 16px;
+    margin-left: 40px;
+  }
+  .sortSelect {
+    width: 170px;
+  }
+}

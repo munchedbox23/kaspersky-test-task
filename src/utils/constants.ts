@@ -10,7 +10,7 @@ interface INavLink {
 
 export const ROUTE: Record<string, string> = {
   home: "/",
-  userList: "user-list",
+  userList: "users-list",
 };
 
 export const navLinks: Array<INavLink> = [

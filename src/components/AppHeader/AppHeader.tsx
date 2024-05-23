@@ -1,6 +1,6 @@
 import headerStyles from "./AppHeader.module.css";
 import LogoImage from "../../images/logo.svg";
-import { FC, useEffect, useState } from "react";
+import { ChangeEvent, FC, useEffect, useState } from "react";
 import { navLinks } from "../../utils/constants";
 import { HeaderLink } from "../HeaderLink/HeaderLink";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,10 +11,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { AnimatePresence, motion } from "framer-motion";
 import cn from "classnames";
+import { useAppDispatch } from "../../services/store/hooks";
+import { filterUsersByName } from "../../services/features/users/usersSlice";
+import { useSearchParams } from "react-router-dom";
 
 export const AppHeader: FC = () => {
   const [isInputActive, setIsInputActive] = useState(false);
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 640);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const handleResize = () => {
@@ -26,6 +32,26 @@ export const AppHeader: FC = () => {
       window.removeEventListener("resize", handleResize);
     };
   });
+
+  useEffect(() => {
+    const searchTerm = searchParams.get("search") || "";
+    if (searchTerm) {
+      setIsInputActive(true);
+      dispatch(filterUsersByName(searchTerm));
+    }
+  }, [dispatch, searchParams]);
+
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const searchTerm = e.target.value;
+    setSearchParams({ [e.target.name]: searchTerm });
+    dispatch(filterUsersByName(searchTerm));
+  };
+
+  const handleCloseSearch = () => {
+    setIsInputActive(false);
+    setSearchParams("");
+    dispatch(filterUsersByName(""));
+  };
 
   return (
     <header className={`${headerStyles.header} pt-8 pb-8`}>
@@ -41,7 +67,6 @@ export const AppHeader: FC = () => {
             {isInputActive && (
               <motion.form
                 autoComplete="false"
-                role="search"
                 className={headerStyles.searchField}
                 initial={{ width: 0 }}
                 animate={{ width: "100%" }}
@@ -50,11 +75,12 @@ export const AppHeader: FC = () => {
               >
                 <input
                   type="text"
-                  placeholder="Поиск..."
+                  placeholder="Поиск пользователя..."
                   name="search"
                   className={`${headerStyles.input} pt-4 pr-10 pb-4 pl-6`}
                   autoComplete="off"
-                  maxLength={550}
+                  value={searchParams.get("search") || ""}
+                  onChange={handleSearchChange}
                 />
                 <motion.button
                   type="button"
@@ -62,7 +88,7 @@ export const AppHeader: FC = () => {
                     headerStyles.searchIcon,
                     headerStyles.closeIcon
                   )}
-                  onClick={() => setIsInputActive(false)}
+                  onClick={handleCloseSearch}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
