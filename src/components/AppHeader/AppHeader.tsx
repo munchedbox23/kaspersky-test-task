@@ -33,14 +33,6 @@ export const AppHeader: FC = () => {
     };
   });
 
-  useEffect(() => {
-    const searchTerm = searchParams.get("search") || "";
-    if (searchTerm) {
-      setIsInputActive(true);
-      dispatch(filterUsersByName(searchTerm));
-    }
-  }, [dispatch, searchParams]);
-
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value;
     setSearchParams({ [e.target.name]: searchTerm });
