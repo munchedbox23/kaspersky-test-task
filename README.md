@@ -1,4 +1,4 @@
-<h1 align="center">Тестовое задания для Kaspersky Lab</h1>
+<h1 align="center">Тестовое задание для Kaspersky Lab</h1>
 
 <div align="center">
   <img src="https://s3.printskrin.ru/printskrin/413c5bf6-streamtube/2024/06/18/kaspersky-main.png" alt="kaspersky-main.png" border="0" />
