@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { IUser, TDisplayMode, TSortOption } from "../../../types/userTypes";
 import { request } from "../../../utils/requests";
 
-type TUsersState = {
+export type TUsersState = {
   users: Array<IUser>;
   isUsersRequestLoading: boolean;
   isUsersRequestFailed: boolean;
@@ -11,7 +11,7 @@ type TUsersState = {
   sortOption: TSortOption;
 };
 
-const initialState: TUsersState = {
+export const initialState: TUsersState = {
   users: [],
   filteredUsers: [],
   isUsersRequestLoading: false,
