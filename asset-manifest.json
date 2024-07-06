@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "./static/css/main.eb2bc0bc.css",
-    "main.js": "./static/js/main.7db6782d.js",
-    "static/js/453.52da25e9.chunk.js": "./static/js/453.52da25e9.chunk.js",
-    "static/media/KasperskySansMono-Bold.woff": "./static/media/KasperskySansMono-Bold.0f799bd841f6542bf1ef.woff",
-    "static/media/KasperskySansMono-Regular.woff": "./static/media/KasperskySansMono-Regular.c88376aecbd6a740c375.woff",
-    "static/media/KasperskySans-Regular.woff": "./static/media/KasperskySans-Regular.9ea2793fd486b3bfcf60.woff",
-    "static/media/KasperskySans-Bold.woff": "./static/media/KasperskySans-Bold.00704efe6b940e5c52c8.woff",
-    "static/media/logo.svg": "./static/media/logo.b77c7139b6f518bae51d3902b23f8b14.svg",
-    "index.html": "./index.html",
-    "main.eb2bc0bc.css.map": "./static/css/main.eb2bc0bc.css.map",
-    "main.7db6782d.js.map": "./static/js/main.7db6782d.js.map",
-    "453.52da25e9.chunk.js.map": "./static/js/453.52da25e9.chunk.js.map"
+    "main.css": "/kaspersky-test-task/static/css/main.223f9395.css",
+    "main.js": "/kaspersky-test-task/static/js/main.f3ef5f92.js",
+    "static/js/453.52da25e9.chunk.js": "/kaspersky-test-task/static/js/453.52da25e9.chunk.js",
+    "static/media/KasperskySansMono-Bold.woff": "/kaspersky-test-task/static/media/KasperskySansMono-Bold.0f799bd841f6542bf1ef.woff",
+    "static/media/KasperskySansMono-Regular.woff": "/kaspersky-test-task/static/media/KasperskySansMono-Regular.c88376aecbd6a740c375.woff",
+    "static/media/KasperskySans-Regular.woff": "/kaspersky-test-task/static/media/KasperskySans-Regular.9ea2793fd486b3bfcf60.woff",
+    "static/media/KasperskySans-Bold.woff": "/kaspersky-test-task/static/media/KasperskySans-Bold.00704efe6b940e5c52c8.woff",
+    "static/media/logo.svg": "/kaspersky-test-task/static/media/logo.b77c7139b6f518bae51d3902b23f8b14.svg",
+    "index.html": "/kaspersky-test-task/index.html",
+    "main.223f9395.css.map": "/kaspersky-test-task/static/css/main.223f9395.css.map",
+    "main.f3ef5f92.js.map": "/kaspersky-test-task/static/js/main.f3ef5f92.js.map",
+    "453.52da25e9.chunk.js.map": "/kaspersky-test-task/static/js/453.52da25e9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.eb2bc0bc.css",
-    "static/js/main.7db6782d.js"
+    "static/css/main.223f9395.css",
+    "static/js/main.f3ef5f92.js"
   ]
 }
