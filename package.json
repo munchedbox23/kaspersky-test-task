@@ -2,6 +2,7 @@
   "name": "kaspersky-test-task",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://munchedbox23.github.io/kaspersky-test-task",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-regular-svg-icons": "^6.5.2",
@@ -40,7 +41,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -66,6 +69,7 @@
     "cypress": "^13.12.0",
     "eslint-plugin-cypress": "^3.3.0",
     "fetch-mock": "^10.0.6",
+    "gh-pages": "^6.1.1",
     "jest": "^27.5.1",
     "react-test-renderer": "^18.3.1",
     "redux-mock-store": "^1.5.4",

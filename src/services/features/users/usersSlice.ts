@@ -23,7 +23,9 @@ export const initialState: TUsersState = {
 export const getUsers = createAsyncThunk<IUser[], undefined>(
   "users/getUsers",
   async () => {
-    const response = request<IUser[]>("http://localhost:3000/users");
+    const response = request<IUser[]>(
+      "https://my-json-server.typicode.com/munchedbox/fake-data-base/users"
+    );
     return response;
   }
 );
